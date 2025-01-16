@@ -17,7 +17,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     
-    @Value("{spring.datasource.url}")
+    @Value("${spring.datasource.url}")
     private String dbUrl;
     
     @PostMapping
@@ -26,10 +26,6 @@ public class UserController {
         userService.createUser(userRequest);
     }
     
-    @GetMapping("/test")
-    public String test() {
-        return dbUrl;
-    }
     
 //    @GetMapping
 //    public ResponseEntity<List<UserResponse>> getAllUsers() {
