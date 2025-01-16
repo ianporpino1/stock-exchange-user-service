@@ -17,8 +17,6 @@ public class UserController {
     @Autowired
     private UserService userService;
     
-    @Value("${spring.datasource.url}")
-    private String dbUrl;
     
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -27,11 +25,11 @@ public class UserController {
     }
     
     
-//    @GetMapping
-//    public ResponseEntity<List<UserResponse>> getAllUsers() {
-//        List<UserR> users = userService.getAllUsers();
-//        return ResponseEntity.ok(userService.getAllUsers());
-//    }
+    @GetMapping
+    public String test() {
+        
+        return "Teste autenticado";
+    }
     
     
     
