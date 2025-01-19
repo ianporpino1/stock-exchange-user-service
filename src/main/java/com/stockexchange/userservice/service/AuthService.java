@@ -13,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class AuthService {
     
@@ -26,7 +28,7 @@ public class AuthService {
     }
 
 
-    public Long extractUserId(Jwt principal) {
+    public UUID extractUserId(Jwt principal) {
         return jwtService.extractUserId(principal);
     }
 

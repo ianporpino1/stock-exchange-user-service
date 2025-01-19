@@ -8,6 +8,7 @@ import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Service
 public class JwtService {
@@ -31,7 +32,7 @@ public class JwtService {
                 .issuer("spring-jwt-issuer")
                 .issuedAt(now)
                 .expiresAt(now.plusSeconds(expiry))
-                .subject(String.valueOf(userId))
+                .subject(userId.toString())
                 .build();
 
         JwtEncoderParameters parameters = JwtEncoderParameters
@@ -40,8 +41,8 @@ public class JwtService {
         return encoder.encode(parameters).getTokenValue();
     }
 
-    public Long extractUserId(Jwt principal){
-        return Long.valueOf(principal.getClaim("sub"));
+    public UUID extractUserId(Jwt principal){
+        return UUID.fromString(principal.getSubject());
     }
 }
 
